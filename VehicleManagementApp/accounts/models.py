@@ -11,8 +11,8 @@ alphanumeric = RegexValidator
 class UserManager(BaseUserManager):
     def create_user(self, email, Name,Contact ,password=None,password2=None):
         """
-        Creates and saves a User with the given email, date of
-        birth and password.
+        Creates and saves a User with the given email, name , contact,
+        password 
         """
         if not email:
             raise ValueError('Users must have an email address')
@@ -114,3 +114,6 @@ class VehicleDetails(models.Model):
     VehicleType=models.CharField(max_length=20,choices=VEHICLETYPE)
     VehicleModel=models.CharField(max_length=60)
     VehicleDescription=models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.VehicleNumber
